@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
 import {Alert, Text, View, TouchableOpacity} from 'react-native';
+import React from 'react';
 
-export default class locationFunction extends Component {
+export default class locationFunction {
   state = {
     location: null,
   };
