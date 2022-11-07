@@ -1,0 +1,227 @@
+import React from 'react';
+import {SafeAreaView, StyleSheet, View, Alert} from 'react-native';
+import {IconButton} from '@react-native-material/core';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import BottomTab from '../BottomTab';
+import MapView, {Marker} from 'react-native-maps';
+import Geolocation from '@react-native-community/geolocation';
+
+function parsing(pos) {
+  let result = {};
+  const obj = JSON.stringify(pos);
+  const json = JSON.parse(obj);
+  //result.id = 24345;
+  result.time = json.timestamp;
+  result.latitude = json.coords.latitude;
+  result.longitude = json.coords.longitude;
+
+  //console.log('json:' + result.time + result.longitude + result.latitude);
+  let new_json = JSON.stringify(result);
+  console.log(new_json);
+}
+
+function Sleep(milliseconds) {
+  return new Promise(resolve => setTimeout(resolve, milliseconds));
+}
+
+async function continous_tracking() {
+  for (let i = 0; i < 3; i++) {
+    Geolocation.getCurrentPosition(parsing);
+    await Sleep(3000);
+  }
+}
+
+function oneTimeLocation() {
+  Geolocation.getCurrentPosition(parsing);
+}
+const HomeScreen = ({navigation}) => {
+  return (
+    <SafeAreaView style={{flex: 1, backgroundColor: 'black'}}>
+      <View>
+        <MapView
+          style={styles.mapStyle}
+          initialRegion={{
+            latitude: 51.715248,
+            longitude: 8.75213,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+          customMapStyle={mapStyle}>
+          <Marker
+            draggable
+            coordinate={{
+              latitude: 51.715248,
+              longitude: 8.75213,
+            }}
+            // eslint-disable-next-line no-alert
+            onDragEnd={e => alert(JSON.stringify(e.nativeEvent.coordinate))}
+            title={'Test Marker'}
+            description={'This is a description of the marker'}
+          />
+        </MapView>
+      </View>
+      <View style={styles.ButtonContainer}>
+        <IconButton
+          icon={props => <Icon name="home" style={{fontSize: 40}} {...props} />}
+          color="white"
+          onPress={() => navigation.navigate('Home')}
+        />
+        <IconButton
+          icon={props => (
+            <Icon name="play-circle" style={{fontSize: 40}} {...props} />
+          )}
+          color="white"
+          onPress={() =>
+            Alert.alert('Das Tracking wurde erfolgreich gestartet')
+          }
+        />
+        <IconButton
+          icon={props => (
+            <Icon
+              name="plus"
+              style={{fontSize: 44, marginLeft: 10}}
+              {...props}
+            />
+          )}
+          style={styles.iconPlus}
+          onPress={() => navigation.navigate('AddStation')}
+          color="black"
+        />
+        <IconButton
+          icon={props => (
+            <Icon name="stop-circle" style={{fontSize: 40}} {...props} />
+          )}
+          color="white"
+          onPress={() => Alert.alert('Tracking beendet!')}
+        />
+
+        <IconButton
+          icon={props => (
+            <Icon name="calendar-day" style={{fontSize: 40}} {...props} />
+          )}
+          color="white"
+          onPress={() => oneTimeLocation()}
+        />
+      </View>
+      <BottomTab />
+    </SafeAreaView>
+  );
+};
+export default HomeScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    alignItems: 'center',
+  },
+  ButtonContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    //backgroundColor: 'red',
+    maxHeight: 60,
+    position: 'absolute',
+    marginLeft: 10,
+    marginRight: 10,
+    bottom: 30,
+    right: 20,
+    left: 20,
+    zIndex: 1,
+  },
+  mapStyle: {
+    position: 'absolute',
+    width: 400,
+    height: 720,
+    margin: 10,
+    zIndex: 1,
+  },
+  iconPlus: {
+    bottom: 20,
+    left: '2%',
+  },
+});
+
+const mapStyle = [
+  {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+  {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+  {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+  {
+    featureType: 'administrative.locality',
+    elementType: 'labels.text.fill',
+    stylers: [{color: '#d59563'}],
+  },
+  {
+    featureType: 'poi',
+    elementType: 'labels.text.fill',
+    stylers: [{color: '#d59563'}],
+  },
+  {
+    featureType: 'poi.park',
+    elementType: 'geometry',
+    stylers: [{color: '#263c3f'}],
+  },
+  {
+    featureType: 'poi.park',
+    elementType: 'labels.text.fill',
+    stylers: [{color: '#6b9a76'}],
+  },
+  {
+    featureType: 'road',
+    elementType: 'geometry',
+    stylers: [{color: '#38414e'}],
+  },
+  {
+    featureType: 'road',
+    elementType: 'geometry.stroke',
+    stylers: [{color: '#212a37'}],
+  },
+  {
+    featureType: 'road',
+    elementType: 'labels.text.fill',
+    stylers: [{color: '#9ca5b3'}],
+  },
+  {
+    featureType: 'road.highway',
+    elementType: 'geometry',
+    stylers: [{color: '#746855'}],
+  },
+  {
+    featureType: 'road.highway',
+    elementType: 'geometry.stroke',
+    stylers: [{color: '#1f2835'}],
+  },
+  {
+    featureType: 'road.highway',
+    elementType: 'labels.text.fill',
+    stylers: [{color: '#f3d19c'}],
+  },
+  {
+    featureType: 'transit',
+    elementType: 'geometry',
+    stylers: [{color: '#2f3948'}],
+  },
+  {
+    featureType: 'transit.station',
+    elementType: 'labels.text.fill',
+    stylers: [{color: '#d59563'}],
+  },
+  {
+    featureType: 'water',
+    elementType: 'geometry',
+    stylers: [{color: '#17263c'}],
+  },
+  {
+    featureType: 'water',
+    elementType: 'labels.text.fill',
+    stylers: [{color: '#515c6d'}],
+  },
+  {
+    featureType: 'water',
+    elementType: 'labels.text.stroke',
+    stylers: [{color: '#17263c'}],
+  },
+];
