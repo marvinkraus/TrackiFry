@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   content: {
     flexDirection: 'column',
     zIndex: 0,
-    width: Dimensions.get('window').width - 20,
+    width: Dimensions.get('window').width - 25,
     marginBottom: '1%',
     left: '4%',
     right: '4%',
