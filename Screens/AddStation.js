@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 import {Button} from '@react-native-material/core';
 //const GOOGLE_PLACES_API_KEY = 'AIzaSyDTSx3i96XYjLF2qgnCoR5dh8GwU30N9cY';
@@ -10,11 +10,10 @@ const AddStation = () => {
       <Text
         style={{
           fontSize: 24,
-          width: '80%',
           marginTop: 100,
-          position: 'relative',
-          alignItems: 'center',
-          justifyContent: 'center',
+          marginBottom: '3%',
+          color: 'white',
+          textAlign: 'center',
         }}>
         Bitte Adresse eingeben
       </Text>
@@ -35,7 +34,9 @@ const AddStation = () => {
         }}
         onFail={error => console.error(error)}
       />
-      <Button title="Halt bestätigen"></Button>
+      <Button
+        style={{backgroundColor: '#ff9300', color: 'black'}}
+        title="Halt bestätigen"></Button>
     </View>
   );
 };
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
   autocompleteStyle: {
     flex: 1,
     padding: 40,
-    backgroundColor: '#d5d5d5',
+    backgroundColor: '#000000',
   },
   AdresseEingeben: {
     alignItems: 'center',
