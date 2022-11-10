@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, View, Alert} from 'react-native';
+import {SafeAreaView, StyleSheet, View, Alert, Text} from 'react-native';
 import {IconButton} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import BottomTab from '../BottomTab';
@@ -36,7 +36,7 @@ function oneTimeLocation() {
 }
 const HomeScreen = ({navigation}) => {
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: 'black'}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#16222d'}}>
       <View>
         <MapView
           style={styles.mapStyle}
@@ -75,18 +75,8 @@ const HomeScreen = ({navigation}) => {
             Alert.alert('Das Tracking wurde erfolgreich gestartet')
           }
         />
-        <IconButton
-          icon={props => (
-            <Icon
-              name="plus"
-              style={{fontSize: 44, marginLeft: 10}}
-              {...props}
-            />
-          )}
-          style={styles.iconPlus}
-          onPress={() => navigation.navigate('AddStation')}
-          color="black"
-        />
+      </View>
+      <View style={styles.ButtonContainer2}>
         <IconButton
           icon={props => (
             <Icon name="stop-circle" style={{fontSize: 40}} {...props} />
@@ -100,10 +90,20 @@ const HomeScreen = ({navigation}) => {
             <Icon name="calendar-day" style={{fontSize: 40}} {...props} />
           )}
           color="white"
-          onPress={() => oneTimeLocation()}
+          //onPress={() => oneTimeLocation()}
+          onPress={() => navigation.navigate('SavedRoutes')}
         />
       </View>
+
       <BottomTab />
+      <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        <IconButton
+          icon={props => <Icon name="plus" style={{fontSize: 48}} {...props} />}
+          style={styles.iconPlus}
+          onPress={() => navigation.navigate('AddStation')}
+          color="black"
+        />
+      </View>
     </SafeAreaView>
   );
 };
@@ -125,22 +125,35 @@ const styles = StyleSheet.create({
     position: 'absolute',
     marginLeft: 10,
     marginRight: 10,
-    bottom: 23,
+    bottom: '1%',
     right: 20,
     left: 20,
     zIndex: 11,
+    width: '30%',
+  },
+  ButtonContainer2: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    maxHeight: 60,
+    position: 'absolute',
+    bottom: '1%',
+    right: 20,
+    zIndex: 11,
+    marginRight: 10,
+    width: '30%',
   },
   mapStyle: {
     position: 'relative',
-    width: 400,
-    height: 900,
+    width: '100%',
+    height: '96%',
     zIndex: 0,
+    marginRight: 0,
   },
   iconPlus: {
-    bottom: 20,
-    right: '13%',
+    bottom: 40,
+    zIndex: 12,
     //backgroundColor: 'red',
-    marginLeft: 1,
   },
 });
 

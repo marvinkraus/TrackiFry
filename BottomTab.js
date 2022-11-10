@@ -39,8 +39,8 @@ export default class BottomTab extends Component {
             viewBox="0 0 1092 260"
             space="preserve">
             <Path
-              fill={'#373A50'}
-              stroke={'#373A50'}
+              fill={'#1c1b1b'}
+              stroke={'#1c1b1b'}
               d={`M30,60h${this.state.pathX}.3c17.2,0,31,14.4,30,31.6c-0.2,2.7-0.3,5.5-0.3,8.2c0,71.2,58.1,129.6,129.4,130c72.1,0.3,130.6-58,130.6-130c0-2.7-0.1-5.4-0.2-8.1C${this.state.pathY}.7,74.5,${this.state.pathA}.5,60,${this.state.pathB}.7,60H1062c16.6,0,30,13.4,30,30v94c0,42-34,76-76,76H76c-42,0-76-34-76-76V90C0,73.4,13.4,60,30,60z`}
             />
             <Circle
@@ -61,24 +61,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     zIndex: 10,
-    bottom: 60,
+    bottom: 55,
   },
   content: {
     flexDirection: 'column',
-    width: Dimensions.get('window').width - 20,
+    width: Dimensions.get('window').width,
     marginBottom: '1%',
-    left: '2%',
-    right: '2%',
     position: 'absolute',
-    bottom: 1,
   },
   subContent: {
     flexDirection: 'row',
     marginLeft: 15,
     marginRight: 15,
-    marginBottom: 10,
     zIndex: 10,
     position: 'absolute',
-    bottom: 5,
   },
 });
