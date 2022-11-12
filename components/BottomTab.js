@@ -61,13 +61,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     zIndex: 10,
-    bottom: 55,
   },
   content: {
     flexDirection: 'column',
     width: Dimensions.get('window').width,
     marginBottom: '1%',
     position: 'absolute',
+    //backgroundColor: 'red',
+    bottom: -52,
   },
   subContent: {
     flexDirection: 'row',

@@ -2,9 +2,9 @@ import React from 'react';
 import {SafeAreaView, StyleSheet, View, Alert, Text} from 'react-native';
 import {IconButton} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import BottomTab from '../BottomTab';
-import MapView, {Marker} from 'react-native-maps';
+import BottomTab from '../components/BottomTab';
 import Geolocation from '@react-native-community/geolocation';
+import MapHomeScreen from '../components/Map';
 
 function parsing(pos) {
   let result = {};
@@ -36,30 +36,7 @@ function oneTimeLocation() {
 }
 const HomeScreen = ({navigation}) => {
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: '#16222d'}}>
-      <View>
-        <MapView
-          style={styles.mapStyle}
-          initialRegion={{
-            latitude: 51.715248,
-            longitude: 8.75213,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}
-          customMapStyle={mapStyle}>
-          <Marker
-            draggable
-            coordinate={{
-              latitude: 51.715248,
-              longitude: 8.75213,
-            }}
-            // eslint-disable-next-line no-alert
-            onDragEnd={e => alert(JSON.stringify(e.nativeEvent.coordinate))}
-            title={'Test Marker'}
-            description={'This is a description of the marker'}
-          />
-        </MapView>
-      </View>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#7a7a7a'}}>
       <View style={styles.ButtonContainer}>
         <IconButton
           icon={props => <Icon name="home" style={{fontSize: 40}} {...props} />}
@@ -94,7 +71,7 @@ const HomeScreen = ({navigation}) => {
           onPress={() => navigation.navigate('SavedRoutes')}
         />
       </View>
-
+      <MapHomeScreen />
       <BottomTab />
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
         <IconButton
@@ -156,84 +133,3 @@ const styles = StyleSheet.create({
     //backgroundColor: 'red',
   },
 });
-
-const mapStyle = [
-  {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
-  {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
-  {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
-  {
-    featureType: 'administrative.locality',
-    elementType: 'labels.text.fill',
-    stylers: [{color: '#d59563'}],
-  },
-  {
-    featureType: 'poi',
-    elementType: 'labels.text.fill',
-    stylers: [{color: '#d59563'}],
-  },
-  {
-    featureType: 'poi.park',
-    elementType: 'geometry',
-    stylers: [{color: '#263c3f'}],
-  },
-  {
-    featureType: 'poi.park',
-    elementType: 'labels.text.fill',
-    stylers: [{color: '#6b9a76'}],
-  },
-  {
-    featureType: 'road',
-    elementType: 'geometry',
-    stylers: [{color: '#38414e'}],
-  },
-  {
-    featureType: 'road',
-    elementType: 'geometry.stroke',
-    stylers: [{color: '#212a37'}],
-  },
-  {
-    featureType: 'road',
-    elementType: 'labels.text.fill',
-    stylers: [{color: '#9ca5b3'}],
-  },
-  {
-    featureType: 'road.highway',
-    elementType: 'geometry',
-    stylers: [{color: '#746855'}],
-  },
-  {
-    featureType: 'road.highway',
-    elementType: 'geometry.stroke',
-    stylers: [{color: '#1f2835'}],
-  },
-  {
-    featureType: 'road.highway',
-    elementType: 'labels.text.fill',
-    stylers: [{color: '#f3d19c'}],
-  },
-  {
-    featureType: 'transit',
-    elementType: 'geometry',
-    stylers: [{color: '#2f3948'}],
-  },
-  {
-    featureType: 'transit.station',
-    elementType: 'labels.text.fill',
-    stylers: [{color: '#d59563'}],
-  },
-  {
-    featureType: 'water',
-    elementType: 'geometry',
-    stylers: [{color: '#17263c'}],
-  },
-  {
-    featureType: 'water',
-    elementType: 'labels.text.fill',
-    stylers: [{color: '#515c6d'}],
-  },
-  {
-    featureType: 'water',
-    elementType: 'labels.text.stroke',
-    stylers: [{color: '#17263c'}],
-  },
-];
