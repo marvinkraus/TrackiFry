@@ -65,10 +65,8 @@ const styles = StyleSheet.create({
   content: {
     flexDirection: 'column',
     width: Dimensions.get('window').width,
-    marginBottom: '1%',
     position: 'absolute',
     //backgroundColor: 'red',
-    bottom: -52,
   },
   subContent: {
     flexDirection: 'row',

@@ -31,7 +31,7 @@ export default class MapHomeScreen extends Component {
 
   render() {
     return (
-      <SafeAreaView style={{flex: 1, backgroundColor: '#16222d'}}>
+      <SafeAreaView style={{flex: 20, backgroundColor: '#16222d'}}>
         <MapView
           showsUserLocation={true}
           followUserLocation={true}
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   mapStyle: {
     position: 'relative',
     width: '100%',
-    height: '190%',
+    height: '120%',
     zIndex: 0,
     marginRight: 0,
   },
