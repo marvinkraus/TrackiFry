@@ -2,7 +2,6 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 import {Button} from '@react-native-material/core';
-//const GOOGLE_PLACES_API_KEY = 'AIzaSyDTSx3i96XYjLF2qgnCoR5dh8GwU30N9cY';
 
 const AddStation = () => {
   return (
@@ -36,7 +35,8 @@ const AddStation = () => {
       />
       <Button
         style={{backgroundColor: '#ff9300', color: 'black'}}
-        title="Halt bestätigen"></Button>
+        title="Halt bestätigen"
+      />
     </View>
   );
 };

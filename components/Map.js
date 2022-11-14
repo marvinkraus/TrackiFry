@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
 import MapView, {Marker} from 'react-native-maps';
-
 //{"lat":52.52000659999999,"lng":13.404954}
-var ListofMarker = [{lat: 52.52000659999999, lng: 13.404954}];
+//var ListofMarker = [{lat: 52.52000659999999, lng: 13.404954}];
 
 export default class MapHomeScreen extends Component {
   constructor(props) {
@@ -62,6 +61,13 @@ export default class MapHomeScreen extends Component {
             title={'Test Marker'}
             description={'This is a description of the marker'}
           />
+          <Marker
+            coordinate={{
+              latitude: 51.715248,
+              longitude: 8.75213,
+            }}
+            image={require('../images/Icon-Marker.png')}
+          />
         </MapView>
       </SafeAreaView>
     );
@@ -79,7 +85,7 @@ const styles = StyleSheet.create({
   mapStyle: {
     position: 'relative',
     width: '100%',
-    height: '120%',
+    height: '105%',
     zIndex: 0,
     marginRight: 0,
   },

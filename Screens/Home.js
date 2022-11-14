@@ -36,16 +36,19 @@ function oneTimeLocation() {
 }
 const HomeScreen = ({navigation}) => {
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: '#7a7a7a'}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#16222d'}}>
       <View style={styles.ButtonContainer}>
         <IconButton
-          icon={props => <Icon name="home" style={{fontSize: 40}} {...props} />}
+          icon={props => <Icon name="home" style={{fontSize: 36}} {...props} />}
           color="white"
-          onPress={() => navigation.navigate('Home')}
+          //onPress={() => navigation.navigate('Home')}
+          onPress={() =>
+            Geolocation.getCurrentPosition(info => console.log(info))
+          }
         />
         <IconButton
           icon={props => (
-            <Icon name="play-circle" style={{fontSize: 40}} {...props} />
+            <Icon name="play-circle" style={{fontSize: 36}} {...props} />
           )}
           color="white"
           onPress={() =>
@@ -56,7 +59,7 @@ const HomeScreen = ({navigation}) => {
       <View style={styles.ButtonContainer2}>
         <IconButton
           icon={props => (
-            <Icon name="stop-circle" style={{fontSize: 40}} {...props} />
+            <Icon name="stop-circle" style={{fontSize: 36}} {...props} />
           )}
           color="white"
           onPress={() => Alert.alert('Tracking beendet!')}
@@ -64,7 +67,7 @@ const HomeScreen = ({navigation}) => {
 
         <IconButton
           icon={props => (
-            <Icon name="calendar-day" style={{fontSize: 40}} {...props} />
+            <Icon name="calendar-day" style={{fontSize: 36}} {...props} />
           )}
           color="white"
           //onPress={() => oneTimeLocation()}
@@ -123,7 +126,7 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
   },
   iconPlus: {
-    bottom: 25,
+    bottom: '30%',
     zIndex: 12,
     //backgroundColor: 'red',
   },
