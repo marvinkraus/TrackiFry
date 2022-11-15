@@ -1,34 +1,28 @@
 import React, {Component} from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
 import MapView, {Marker} from 'react-native-maps';
-//{"lat":52.52000659999999,"lng":13.404954}
-//var ListofMarker = [{lat: 52.52000659999999, lng: 13.404954}];
+import Markers from './Marker';
+import {IconButton} from '@react-native-material/core';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+
+
 
 export default class MapHomeScreen extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      markers: [
-        {
-          title: 'hello',
-          coordinates: {
-            latitude: 51.825248,
-            longitude: 8.75213,
-          },
-        },
-        {
-          title: 'hello',
-          coordinates: {
-            latitude: 51.625248,
-            longitude: 8.75213,
-          },
-        },
-      ],
-    };
+    this.markersTest = Markers.getInstance();
   }
 
+  rerender() {
+    this.forceUpdate();
+    console.log('updato');
+  }
   render() {
+    let markerList = this.markersTest.getMarkers();
+    this.state = {
+      markers: markerList,
+    };
     return (
       <SafeAreaView style={{flex: 20, backgroundColor: '#16222d'}}>
         <MapView
@@ -48,6 +42,7 @@ export default class MapHomeScreen extends Component {
               key={index}
               coordinate={marker.coordinates}
               title={marker.title}
+              image={require('../images/foodtruck.png')} //IMAGE SIZE ÄNDERN
             />
           ))}
           <Marker
@@ -61,19 +56,18 @@ export default class MapHomeScreen extends Component {
             title={'Test Marker'}
             description={'This is a description of the marker'}
           />
-          <Marker
-            coordinate={{
-              latitude: 51.715248,
-              longitude: 8.75213,
-            }}
-            image={require('../images/Icon-Marker.png')}
-          />
         </MapView>
+        <IconButton
+          icon={props => <Icon name="sync" style={{fontSize: 26}} {...props} />}
+          style={styles.iconRefresh}
+          //onPress={() => navigation.navigate('AddStation')}
+          color="white"
+          onPress={() => this.rerender()}
+        />
       </SafeAreaView>
     );
   }
 }
-
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
@@ -88,6 +82,10 @@ const styles = StyleSheet.create({
     height: '105%',
     zIndex: 0,
     marginRight: 0,
+  },
+  iconRefresh: {
+    marginBottom: 800,
+    position: 'absolute',
   },
 });
 

@@ -6,6 +6,8 @@ import BottomTab from '../components/BottomTab';
 import Geolocation from '@react-native-community/geolocation';
 import MapHomeScreen from '../components/Map';
 
+let tracking = true;
+
 function parsing(pos) {
   let result = {};
   const obj = JSON.stringify(pos);
@@ -25,15 +27,20 @@ function Sleep(milliseconds) {
 }
 
 async function continous_tracking() {
-  for (let i = 0; i < 3; i++) {
+  while (tracking === true) {
     Geolocation.getCurrentPosition(parsing);
-    await Sleep(3000);
+    await Sleep(600000); //alle 10 Minuten wird der Standort versendet
   }
 }
 
-function oneTimeLocation() {
-  Geolocation.getCurrentPosition(parsing);
+//function oneTimeLocation() {
+//  Geolocation.getCurrentPosition(parsing);
+//}
+
+function StopTracking() {
+  tracking = false;
 }
+
 const HomeScreen = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#16222d'}}>
@@ -51,9 +58,12 @@ const HomeScreen = ({navigation}) => {
             <Icon name="play-circle" style={{fontSize: 36}} {...props} />
           )}
           color="white"
-          onPress={() =>
-            Alert.alert('Das Tracking wurde erfolgreich gestartet')
-          }
+          onPress={() => {
+            continous_tracking();
+            Alert.alert('Standortverfolgung', 'Die Standortverfolung wurde erfolgreich gestartet', [
+              {text: 'Bestätigen'},
+            ]);
+          }}
         />
       </View>
       <View style={styles.ButtonContainer2}>
@@ -62,7 +72,12 @@ const HomeScreen = ({navigation}) => {
             <Icon name="stop-circle" style={{fontSize: 36}} {...props} />
           )}
           color="white"
-          onPress={() => Alert.alert('Tracking beendet!')}
+          onPress={() => {
+            StopTracking();
+            Alert.alert('Standortverfolgung', 'Die Standortverfolung wurde beendet', [
+              {text: 'Bestätigen'},
+            ]);
+          }}
         />
 
         <IconButton
