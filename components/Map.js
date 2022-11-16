@@ -45,17 +45,6 @@ export default class MapHomeScreen extends Component {
               image={require('../images/foodtruck.png')} //IMAGE SIZE ÄNDERN
             />
           ))}
-          <Marker
-            draggable
-            coordinate={{
-              latitude: 51.715248,
-              longitude: 8.75213,
-            }}
-            // eslint-disable-next-line no-alert
-            onDragEnd={e => alert(JSON.stringify(e.nativeEvent.coordinate))}
-            title={'Test Marker'}
-            description={'This is a description of the marker'}
-          />
         </MapView>
         <IconButton
           icon={props => <Icon name="sync" style={{fontSize: 26}} {...props} />}

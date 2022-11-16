@@ -43,7 +43,7 @@ function StopTracking() {
 
 const HomeScreen = ({navigation}) => {
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: '#16222d'}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#253241'}}>
       <View style={styles.ButtonContainer}>
         <IconButton
           icon={props => <Icon name="home" style={{fontSize: 36}} {...props} />}
