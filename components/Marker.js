@@ -1,6 +1,8 @@
-import React, {Component, useState} from 'react';
+import React, {Component} from 'react';
+import Rest_api from '../REST API/rest_api';
 
 export default class Marker extends Component {
+  markerRestApi = Rest_api.getInstance();
   static myInstance = null;
   static getInstance() {
     if (Marker.myInstance == null) {
@@ -12,8 +14,9 @@ export default class Marker extends Component {
   constructor(props) {
     super(props);
     //this.addMarker = this.addMarker.bind(this);
-    const UUID = null;
+
     this.state = [
+      // zur Verdeutlichung wie das Array aufgebaut ist
       /*{
         /* title: 'hello',
         coordinates: {
@@ -65,17 +68,24 @@ export default class Marker extends Component {
       this.UUID = this.generateUUID();
     }
     console.log(this.UUID);
-
+    this.JsonBuilderMarker(description, lat, long, this.UUID);
     const newMarker = {
       title: description,
       coordinates: {latitude: lat, longitude: long},
     };
-    //console.log(this.state);
-    //console.log('afterobj');
-    //this.setState([this.state, newMarker]);
-    //console.log(this.state);
-    //console.log(newMarker);
+
     this.state.push(newMarker);
-    //console.log('test');
+
+  }
+
+  JsonBuilderMarker(description, lat, long, UUID){
+    let result = {};
+    result.description = description;
+    result.latitude = lat;
+    result.longitude = long;
+    result.UUID = UUID;
+
+    let resultjson = JSON.stringify(result);
+    this.markerRestApi.postMarker(resultjson);
   }
 }

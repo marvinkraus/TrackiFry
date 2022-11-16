@@ -5,8 +5,6 @@ import Markers from './Marker';
 import {IconButton} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-
-
 export default class MapHomeScreen extends Component {
   constructor(props) {
     super(props);

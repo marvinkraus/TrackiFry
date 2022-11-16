@@ -4,9 +4,11 @@ import {IconButton} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import BottomTab from '../components/BottomTab';
 import Geolocation from '@react-native-community/geolocation';
-import MapHomeScreen from '../components/Map';
+import MapHomeScreen from '../components/MapHomeScreen';
+import Rest_api from '../REST API/rest_api';
 
 let tracking = true;
+let api = Rest_api.getInstance();
 
 function parsing(pos) {
   let result = {};
@@ -20,6 +22,8 @@ function parsing(pos) {
   //console.log('json:' + result.time + result.longitude + result.latitude);
   let new_json = JSON.stringify(result);
   console.log(new_json);
+  api.postCurrentLocation(new_json);
+  console.log('rest');
 }
 
 function Sleep(milliseconds) {

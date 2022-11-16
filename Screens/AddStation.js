@@ -4,7 +4,6 @@ import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete'
 import BottomTab from '../components/BottomTab';
 import { IconButton } from "@react-native-material/core";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import Geolocation from "@react-native-community/geolocation";
 import Markers from "../components/Marker";
 
 const AddStation = ({navigation}) => {
@@ -38,7 +37,7 @@ const AddStation = ({navigation}) => {
             let long = JSON.stringify(details?.geometry?.location.lng);
             console.log(title, lat, long);
             markersTest.addMarker(title, parseFloat(lat), parseFloat(long));
-            this.GooglePlacesRef.setAddressText("")
+            this.GooglePlacesRef.setAddressText('');
             //console.log(markersTest.getMarkers());
             //console.log('success');
           }}
