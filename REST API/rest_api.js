@@ -53,10 +53,10 @@ export default class Rest_api extends Component {
   postMarker(data) {
     axios
       .post('http://172.20.10.2:3000/postMarker', data)
-      .then(function(response) {
+      .then(function (response) {
         console.log(response);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   }

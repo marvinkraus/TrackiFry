@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, View, Alert, Text} from 'react-native';
+import {SafeAreaView, StyleSheet, View, Alert} from 'react-native';
 import {IconButton} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import BottomTab from '../components/BottomTab';
@@ -64,9 +64,11 @@ const HomeScreen = ({navigation}) => {
           color="white"
           onPress={() => {
             continous_tracking();
-            Alert.alert('Standortverfolgung', 'Die Standortverfolung wurde erfolgreich gestartet', [
-              {text: 'Bestätigen'},
-            ]);
+            Alert.alert(
+              'Standortverfolgung',
+              'Die Standortverfolung wurde erfolgreich gestartet',
+              [{text: 'Bestätigen'}],
+            );
           }}
         />
       </View>
@@ -78,9 +80,11 @@ const HomeScreen = ({navigation}) => {
           color="white"
           onPress={() => {
             StopTracking();
-            Alert.alert('Standortverfolgung', 'Die Standortverfolung wurde beendet', [
-              {text: 'Bestätigen'},
-            ]);
+            Alert.alert(
+              'Standortverfolgung',
+              'Die Standortverfolung wurde beendet',
+              [{text: 'Bestätigen'}],
+            );
           }}
         />
 

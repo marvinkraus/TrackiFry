@@ -3,6 +3,7 @@ import Rest_api from '../REST API/rest_api';
 
 export default class Marker extends Component {
   markerRestApi = Rest_api.getInstance();
+
   static myInstance = null;
   static getInstance() {
     if (Marker.myInstance == null) {
@@ -75,10 +76,16 @@ export default class Marker extends Component {
     };
 
     this.state.push(newMarker);
-
+  }
+  isApiempty() {
+    if ((this.markerRestApi == null) || (this.markerRestApi === undefined)) {
+      console.log('is empty');
+    } else {
+      console.log('is not empty');
+    }
   }
 
-  JsonBuilderMarker(description, lat, long, UUID){
+  JsonBuilderMarker(description, lat, long, UUID) {
     let result = {};
     result.description = description;
     result.latitude = lat;
@@ -86,6 +93,7 @@ export default class Marker extends Component {
     result.UUID = UUID;
 
     let resultjson = JSON.stringify(result);
+    //this.isApiempty();
     this.markerRestApi.postMarker(resultjson);
   }
 }
