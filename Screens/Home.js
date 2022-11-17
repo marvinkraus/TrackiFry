@@ -7,7 +7,7 @@ import Geolocation from '@react-native-community/geolocation';
 import MapHomeScreen from '../components/MapHomeScreen';
 import Rest_api from '../REST API/rest_api';
 
-let tracking = true;
+let tracking = false;
 let api = Rest_api.getInstance();
 
 function parsing(pos) {
@@ -31,6 +31,7 @@ function Sleep(milliseconds) {
 }
 
 async function continous_tracking() {
+  tracking = true;
   while (tracking === true) {
     Geolocation.getCurrentPosition(parsing);
     await Sleep(600); //alle 10 Minuten wird der Standort versendet
