@@ -1,12 +1,14 @@
 import React from 'react';
-import { Text, View } from "react-native";
+import { SafeAreaView, Text, View } from "react-native";
 import BottomTab from '../components/BottomTab';
 
-ListAllStations(){
-
-}
-
 const SavedRoutes = () => {
-  return <View><Text>Hallo</Text></View>;
+  return (
+    <SafeAreaView style={{flex: 1, backgroundColor: '#253241'}}>
+      <View>
+        <BottomTab />
+      </View>
+    </SafeAreaView>
+  );
 };
 export default SavedRoutes;

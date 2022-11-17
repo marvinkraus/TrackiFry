@@ -1,21 +1,22 @@
 import React from 'react';
-import { Alert, StyleSheet, Text, View } from "react-native";
+import { Alert, KeyboardAvoidingView, Platform, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 import BottomTab from '../components/BottomTab';
-import { IconButton } from "@react-native-material/core";
-import Icon from "react-native-vector-icons/FontAwesome5";
-import Markers from "../components/Marker";
+import { IconButton } from '@react-native-material/core';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import Markers from '../components/Marker';
+import Geolocation from '@react-native-community/geolocation';
 
 const AddStation = ({navigation}) => {
   let markersTest = Markers.getInstance();
   let markerList = markersTest.getMarkers();
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#253241'}}>
       <View style={styles.autocompleteStyle}>
         <Text
           style={{
             fontSize: 24,
-            marginTop: 100,
+            marginTop: '30%',
             marginBottom: '3%',
             color: 'white',
             textAlign: 'center',
@@ -67,36 +68,10 @@ const AddStation = ({navigation}) => {
         <IconButton
           icon={props => <Icon name="home" style={{fontSize: 36}} {...props} />}
           color="white"
-          //onPress={() => navigation.navigate('Home')}
           onPress={() => navigation.navigate('Home')}
-        />
-        <IconButton
-          icon={props => (
-            <Icon name="play-circle" style={{fontSize: 36}} {...props} />
-          )}
-          color="white"
-          onPress={() => {
-            continous_tracking();
-            Alert.alert('Standortverfolgung', 'Die Standortverfolung wurde erfolgreich gestartet', [
-              {text: 'Bestätigen'},
-            ]);
-          }}
         />
       </View>
       <View style={styles.ButtonContainer2}>
-        <IconButton
-          icon={props => (
-            <Icon name="stop-circle" style={{fontSize: 36}} {...props} />
-          )}
-          color="white"
-          onPress={() => {
-            StopTracking();
-            Alert.alert('Standortverfolgung', 'Die Standortverfolung wurde beendet', [
-              {text: 'Bestätigen'},
-            ]);
-          }}
-        />
-
         <IconButton
           icon={props => (
             <Icon name="calendar-day" style={{fontSize: 36}} {...props} />
@@ -106,17 +81,25 @@ const AddStation = ({navigation}) => {
           onPress={() => navigation.navigate('SavedRoutes')}
         />
       </View>
-      <BottomTab></BottomTab>
-    </View>
+      <BottomTab />
+      <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        <IconButton
+          icon={props => <Icon name="plus" style={{fontSize: 48}} {...props} />}
+          style={styles.iconPlus}
+          onPress={() => navigation.navigate('AddStation')}
+          color="black"
+        />
+      </View>
+    </SafeAreaView>
   );
 };
 export default AddStation;
 
 const styles = StyleSheet.create({
   autocompleteStyle: {
-    flex: 7,
     padding: 40,
     backgroundColor: '#253241',
+    flex: 17,
   },
   container: {
     position: 'absolute',
@@ -132,31 +115,26 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     maxHeight: 60,
     position: 'absolute',
-    marginLeft: 10,
-    marginRight: 15,
     bottom: '1%',
-    right: 20,
-    left: 20,
     zIndex: 11,
-    width: '30%',
-    paddingRight: 5,
+    width: '15%',
+    left: '15%',
+    //backgroundColor: 'red',
   },
   ButtonContainer2: {
+    //backgroundColor: 'red',
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     maxHeight: 60,
     position: 'absolute',
     bottom: '1%',
-    right: 20,
     zIndex: 11,
-    marginRight: 10,
-    width: '30%',
-    paddingLeft: 5,
+    width: '12%',
+    right: '15%',
   },
   iconPlus: {
-    bottom: '30%',
     zIndex: 12,
-    //backgroundColor: 'red',
+    bottom: '30%',
   },
 });

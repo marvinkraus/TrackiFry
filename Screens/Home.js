@@ -33,7 +33,7 @@ function Sleep(milliseconds) {
 async function continous_tracking() {
   while (tracking === true) {
     Geolocation.getCurrentPosition(parsing);
-    await Sleep(600000); //alle 10 Minuten wird der Standort versendet
+    await Sleep(600); //alle 10 Minuten wird der Standort versendet
   }
 }
 
@@ -151,6 +151,5 @@ const styles = StyleSheet.create({
   iconPlus: {
     bottom: '30%',
     zIndex: 12,
-    //backgroundColor: 'red',
   },
 });
