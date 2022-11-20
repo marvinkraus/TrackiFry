@@ -63,7 +63,6 @@ export default class Marker extends Component {
   }
 
   addMarker(description, lat, long) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     // const [lat, lang] = useState(this.markers);
     if (this.isStateempty()) {
       this.UUID = this.generateUUID();

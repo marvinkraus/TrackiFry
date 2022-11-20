@@ -1,11 +1,10 @@
 import React from 'react';
-import { Alert, KeyboardAvoidingView, Platform, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 import BottomTab from '../components/BottomTab';
 import { IconButton } from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Markers from '../components/Marker';
-import Geolocation from '@react-native-community/geolocation';
 
 const AddStation = ({navigation}) => {
   let markersTest = Markers.getInstance();
@@ -39,11 +38,9 @@ const AddStation = ({navigation}) => {
             console.log(title, lat, long);
             markersTest.addMarker(title, parseFloat(lat), parseFloat(long));
             this.GooglePlacesRef.setAddressText('');
-            //console.log(markersTest.getMarkers());
-            //console.log('success');
           }}
           query={{
-            key: 'AIzaSyDTSx3i96XYjLF2qgnCoR5dh8GwU30N9cY',
+            key: 'API-KEY',
             language: 'de', // language of the results
           }}
           fetchDetails={true}

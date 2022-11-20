@@ -34,13 +34,9 @@ async function continous_tracking() {
   tracking = true;
   while (tracking === true) {
     Geolocation.getCurrentPosition(parsing);
-    await Sleep(600); //alle 10 Minuten wird der Standort versendet
+    await Sleep(600); //alle 5 Minuten wird der Standort versendet
   }
 }
-
-//function oneTimeLocation() {
-//  Geolocation.getCurrentPosition(parsing);
-//}
 
 function StopTracking() {
   tracking = false;
@@ -83,7 +79,7 @@ const HomeScreen = ({navigation}) => {
             StopTracking();
             Alert.alert(
               'Standortverfolgung',
-              'Die Standortverfolung wurde beendet',
+              'Die Standortverfolung wurde beendet!',
               [{text: 'Bestätigen'}],
             );
           }}

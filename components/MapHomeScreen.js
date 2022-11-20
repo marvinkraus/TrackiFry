@@ -40,7 +40,7 @@ export default class MapHomeScreen extends Component {
               key={index}
               coordinate={marker.coordinates}
               title={marker.title}
-              image={require('../images/foodtruck.png')} //IMAGE SIZE ÄNDERN
+              image={require('../images/foodtruckLive.png')} //IMAGE SIZE ÄNDERN
             />
           ))}
         </MapView>

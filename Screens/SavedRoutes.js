@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, Text, View } from "react-native";
+import {SafeAreaView, View} from 'react-native';
 import BottomTab from '../components/BottomTab';
 
 const SavedRoutes = () => {

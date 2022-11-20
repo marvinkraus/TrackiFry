@@ -15,10 +15,10 @@ export default class Rest_api extends Component {
   postCurrentLocation(data) {
     axios
       .post('http://172.20.10.2:3000/CurrentLocation', data)
-      .then(function(response) {
+      .then(function (response) {
         //console.log(response);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   }
@@ -26,10 +26,10 @@ export default class Rest_api extends Component {
   getCurrentLocation(data) {
     axios
       .get('http://172.20.10.2:3000/CurrentLocation')
-      .then(function(response) {
+      .then(function (response) {
         //console.log(response);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   }
@@ -37,15 +37,15 @@ export default class Rest_api extends Component {
   getAllMarkers() {
     axios
       .get('http://172.20.10.2:3000/getAllMarkers')
-      .then(function(response) {
+      .then(function (response) {
         // handle success
         //console.log(response);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         // handle error
         console.log(error);
       })
-      .then(function() {
+      .then(function () {
         // always executed
       });
   }
