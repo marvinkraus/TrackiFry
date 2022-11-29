@@ -32,7 +32,7 @@ Folgende spezifische React Native Komponenten müssen per Terminal installiert w
 - @react-native-material/core
 - react-native-svg
 
-**Schritte zum Starten der Anwendung**
+**Schritte zum Starten der Anwendung**\
 1.) Installieren von React Native --> npm install react-native \
 2.) Starten des Servers mit npm start \
 3.) Starten des Smartphones mit dem Befehl npm run android bzw. ios 
