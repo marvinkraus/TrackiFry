@@ -25,7 +25,7 @@ Folgende spezifische React Native Komponenten müssen per Terminal installiert w
 
 1.) Installieren von React Native --> npm install react-native \
 2.) Starten des Servers mit npm start \
-3.) Starten des Smartphones mit dem Befehl npm run android bzw. ios \
+3.) Starten des Smartphones mit dem Befehl npm run android bzw. ios 
 
 
 Bei Fragen stehe ich gerne zur Verfügung.
