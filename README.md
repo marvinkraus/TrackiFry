@@ -1,8 +1,11 @@
 # TrackiFry
 
-***ATIW Projekt für die Simulation des IHK Projektes im Rahmen des fünften Blockes***
+**ATIW Projekt für die Simulation des IHK Projektes im Rahmen des fünften Blockes**
 
 Für das Projekt werden folgende Tools benötigt:
+
+
+**Benötigte Tools**
 
 - NodeJs 
 - React Native 
@@ -10,8 +13,15 @@ Für das Projekt werden folgende Tools benötigt:
 - Android Studio oder Xcode (Smartphone dort jeweils anlegen)
 - Google API Key (kann hier beantragt werden: https://cloud.google.com/docs/authentication/api-keys 
 
-Der API Key muss in den Dateien AndroidManifest.xml und AddStation.js hinzugefügt werden.
 
+**Beantragen API Key**
+
+Der API Key muss in den Dateien AndroidManifest.xml und AddStation.js hinzugefügt werden) 
+
+Hierfür muss jedoch ein Google Konto vorhanden sein und eine Kreditkarte hinterlegt sein.
+
+
+**React Native Komponenten**
 Folgende spezifische React Native Komponenten müssen per Terminal installiert werden.
 
 - @react-native-community/geolocation
@@ -22,7 +32,7 @@ Folgende spezifische React Native Komponenten müssen per Terminal installiert w
 - @react-native-material/core
 - react-native-svg
 
-
+**Schritte zum Starten der Anwendung**
 1.) Installieren von React Native --> npm install react-native \
 2.) Starten des Servers mit npm start \
 3.) Starten des Smartphones mit dem Befehl npm run android bzw. ios 
