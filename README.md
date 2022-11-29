@@ -16,7 +16,7 @@ Für das Projekt werden folgende Tools benötigt:
 
 **Beantragen API Key**
 
-Der API Key muss in den Dateien AndroidManifest.xml und AddStation.js hinzugefügt werden) 
+Der API Key muss in den Dateien AndroidManifest.xml und AddStation.js hinzugefügt werden.
 
 Hierfür muss jedoch ein Google Konto vorhanden sein und eine Kreditkarte hinterlegt sein.
 
